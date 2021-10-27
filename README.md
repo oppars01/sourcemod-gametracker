@@ -1,6 +1,6 @@
 # Sourcemod Gametracker Rank
 Gametracker Shows Your Server Ranking
-<a href="https://csgo-turkiye.com">![CS:GO Türkiye PUB-G](https://github.com/tncykrkyl/sourcemod-gametracker/raw/main/images/gtrankimage.png)</a>
+<a href="https://csgo-turkiye.com">![CS:GO Türkiye Sourcemod Gametracker](https://github.com/tncykrkyl/sourcemod-gametracker/raw/main/images/gtrankimage.png)</a>
 
 # Description (Açıklama)
 
