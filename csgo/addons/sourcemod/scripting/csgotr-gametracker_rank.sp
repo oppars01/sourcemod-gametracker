@@ -55,7 +55,7 @@ void GametrackerData(Handle hRequest, bool bFailure, bool bRequestSuccessful, EH
         if(client==0){
             PrintToServer("Failed to retrieve data from Gametracker site.");
         }else{
-            if (IsClientConnected(client) && IsValidClient(client) && !IsFakeClient(client))
+            if (IsValidClient(client))
             {
                 PrintToChat(client," \x02Failed to retrieve data from Gametracker site.");
             }
@@ -87,7 +87,7 @@ void GametrackerData(Handle hRequest, bool bFailure, bool bRequestSuccessful, EH
         if(client==0){
             PrintToServer("Gametracker rank: %s", s_rank);
         }else{
-            if (IsClientConnected(client) && IsValidClient(client) && !IsFakeClient(client))
+            if (IsValidClient(client))
             {
                 PrintToChat(client," \x04Gametracker rank: \x0C%s", s_rank);
             }
@@ -96,7 +96,7 @@ void GametrackerData(Handle hRequest, bool bFailure, bool bRequestSuccessful, EH
         if(client==0){
             PrintToServer("Gametracker rank not found.");
         }else{
-            if (IsClientConnected(client) && IsValidClient(client) && !IsFakeClient(client))
+            if (IsValidClient(client))
             {
                 PrintToChat(client," \x02Gametracker rank not found.");
             }
@@ -109,12 +109,11 @@ Action WaitRemove(Handle timer, int client )
 	b_wait_status[client] = false;
 }
 
-stock bool IsValidClient(int client)
+bool IsValidClient(int client, bool nobots = true)
 {
-	if(client > 0 && client <= MaxClients)
+	if (client <= 0 || client > MaxClients || !IsClientConnected(client) || (nobots && IsFakeClient(client)))
 	{
-		if(IsClientInGame(client))
-			return true;
+		return false;
 	}
-	return false;
+	return IsClientInGame(client);
 }
